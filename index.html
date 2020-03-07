@@ -1,4 +1,7 @@
-<!-- Load the handtrackjs model. -->
+<head>
+    <title>Don't touch your face! - COVID-19 outbreak preventer</title>
+    <meta name="description">Deep-learning-based automatic detection system. Runs in your browser and detects when you touch your face, and makes an annoying noise to stop you so that you won't contract COVID-19.</meta>
+</head>
 <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
 <script src="face-api.min.js"></script>
 <style type="text/css">
@@ -20,6 +23,10 @@
     #status-text {grid-area: status}
     #toggle-tracking {grid-area: toggle; justify-self: center;}
     #detailed-control {grid-area: checkbox; justify-self: end;}
+
+    .info{margin-top: 2em; font-size: 0.8em}
+
+    a:visited {color: gray}
 </style>
 
 
@@ -34,6 +41,13 @@
     <div id="detailed-control">
         <label><input type="checkbox" id="beep-enabled" checked />Annoying beep</label>
     </div>
+</div>
+<div class="info">
+    Huge props to <a href="https://github.com/victordibia/handtrack.js">handtrack.js</a> and <a href="https://github.com/justadudewhohacks/face-api.js">face-api.js</a>
+    <br>
+    More info at <a href="https://github.com/thatneat/dont-touch-your-face">github.com/thatneat/dont-touch-your-face</a>
+    <br>
+    Stay safe out there, folks.
 </div>
 
 <script>
@@ -57,7 +71,7 @@
 
     function setStatusText(message) {
         statusText.innerText = message;
-        document.title = message + " - donttouchyourface"
+        document.title = message + " - Don't touch your face!"
     }
 
     function detectOverlap1D (min1, max1, min2, max2) {
@@ -159,6 +173,5 @@
         toggleVideo();
         trackButton.disabled = false;
     })
-
 
 </script>
