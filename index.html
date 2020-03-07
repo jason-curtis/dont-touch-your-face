@@ -1,0 +1,24 @@
+<!-- Load the handtrackjs model. -->
+<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+
+<!-- Replace this with your image. Make sure CORS settings allow reading the image! -->
+<img id="img" src="hand.jpg"/>
+<canvas id="canvas" class="border"></canvas>
+
+<!-- Place your code in the script tag below. You can also use an external .js file -->
+<script>
+  // Notice there is no 'import' statement. 'handTrack' and 'tf' is
+  // available on the index-page because of the script tag above.
+
+  const img = document.getElementById('img');
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+
+  // Load the model.
+  handTrack.load().then(model => {
+    // detect objects in the image.
+    model.detect(img).then(predictions => {
+      console.log('Predictions: ', predictions);
+    });
+  });
+</script>
