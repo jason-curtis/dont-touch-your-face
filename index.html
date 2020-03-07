@@ -12,21 +12,35 @@
         background-color: black;
         color: #ff9800;
         font-family: "Lucida Console", Monaco, monospace;
+        text-align: center;
+    }
+
+
+    @media only screen and (min-device-width: 640px) {
+        .container {
+            width: fit-content;
+            margin: 0 auto;
+        }
     }
     .container {
         display: grid;
-        width: fit-content;
+
+
         grid-auto-columns: max-content;
         grid-template-columns: 1fr auto 1fr;
         grid-template-areas:
             "header header header"
             "canvas canvas canvas"
-            "status toggle checkbox"
+            "status toggle checkbox";
     }
     header {grid-area: header; justify-self: center; margin-bottom: 0.3em}
-    #canvas {grid-area: canvas}
-    #status-text {grid-area: status}
-    #toggle-tracking {grid-area: toggle; justify-self: center;}
+    #canvas {
+        grid-area: canvas;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    #status-text {grid-area: status; justify-self: left}
+    #toggle-tracking {grid-area: toggle; justify-self: center; height: 2em}
     #detailed-control {grid-area: checkbox; justify-self: end;}
 
     .info{margin-top: 2em; font-size: 0.8em}
@@ -76,7 +90,7 @@
     }
 
     function setStatusText(message) {
-        statusText.innerText = message;
+        statusText.innerHTML = message;
         document.title = message + " - Don't touch your face!"
     }
 
@@ -121,7 +135,9 @@
                     beep();
                     setStatusText("Don't touch your face!!!");
                 } else {
-                    setStatusText('Tracking...');
+                    if (videoRunning) {
+                        setStatusText('Tracking...');
+                    }
                 }
 
                 handModel.renderPredictions(handMatches, canvas, context, video);
@@ -136,11 +152,10 @@
     }
 
     function startVideo() {
-        setStatusText('Attempting to start video.')
+        setStatusText('Attempting to start video.<br>Please accept permissions.')
         handTrack.startVideo(video).then(function (status) {
             if (status) {
                 videoRunning = true;
-                faceapi.matchDimensions(canvas, {width: video.width, height: video.height})
                 detectAndIdentify()
             } else {
                 setStatusText("Couldn't enable video. Make sure you've provided permissions.")
