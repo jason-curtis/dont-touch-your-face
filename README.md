@@ -6,6 +6,8 @@ Inspired by the COVID-19 outbreak. The [CDC recommends](https://www.cdc.gov/coro
 
 [**Don't Touch Your Face**](donttouchyourface.net) runs in your browser and detects when you touch your face, and makes an annoying noise to stop you so that you won't contract COVID-19.
 
+![screenshot](screenshot.png "Screenshot")
+
 ## How to use it
 
 Visit [donttouchyourface.net](http://donttouchyourface.net). Accept the camera permissions, then keep that tab open and go about your business.
@@ -28,9 +30,7 @@ Your camera data stays on your computer and your computer does all of the comput
 ### Is it perfect?
 
 nope. Sometimes there are false negatives and sometimes there are false positives.
+
+## Tell me more
+
 I wrote this in an evening in under 200 lines of code. What a cool world we live in.
-
-
-## See also
-
-[CDC recommendations](https://www.cdc.gov/coronavirus/2019-ncov/about/prevention-treatment.html)
