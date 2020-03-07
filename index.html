@@ -153,6 +153,7 @@
             Promise.all([
                 handModel.detect(video),
                 faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions({
+                    inputSize: 240,
                     scoreThreshold: 1 - (faceSensitivityControl.value / 100)
                 }))
             ]).then(([handMatches, faceMatches]) => {
@@ -218,13 +219,12 @@
         localStorage.setItem('faceSensitivityControl', faceSensitivityControl.value);
         localStorage.setItem('beepBoxChecked', beepBox.checked);
     }
-    loadSettings()
+    loadSettings();
 
     Promise.all([
         handTrack.load({
             flipHorizontal: false,   // flip e.g for video
             maxNumBoxes: 4,        // maximum number of boxes to detect
-            // scoreThreshold: 0.8,    // confidence threshold for predictions.
         }),
         faceapi.nets.tinyFaceDetector.loadFromUri('./models')
     ]).then(([newHandModel, _]) => {
