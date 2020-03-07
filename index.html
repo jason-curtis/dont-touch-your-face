@@ -110,7 +110,6 @@
             Promise.all([
                 handModel.detect(video),
                 faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions({
-                    inputSize: 160,
                     scoreThreshold: 0.5
                 }))
             ]).then(([handMatches, faceMatches]) => {
