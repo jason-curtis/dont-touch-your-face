@@ -2,11 +2,19 @@
     <title>Don't touch your face! - COVID-19 outbreak preventer</title>
     <meta property="og:image" content="https://donttouchyourface.net/screenshot.png">
     <meta property="og:url" content="https://donttouchyourface.net">
-    <meta name="description" content="Runs in your browser and detects when you touch your face, and makes an annoying noise to stop you so that you won't contract COVID-19. Deep learning so you can do regular learning and stop touching your face!">
+    <meta name="description" content="Runs in your browser and detects when you touch your face, and makes an annoying noise to stop you so that you won't contract COVID-19. Deep learning so you can do regular learning and stop touching your face!"><!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160014910-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-160014910-1');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+    <script src="face-api.min.js"></script>
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
-<script src="face-api.min.js"></script>
 <style type="text/css">
     body {
         background-color: black;
